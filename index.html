@@ -9,8 +9,36 @@
 	<body>
 		<script src="javascript/three.js"></script>
 		<script src="javascript/three.min.js"></script>
-		<script src="javascript/object.js"></script>
+		<!--script src="javascript/object.js"></script-->
 		<script src="javascript/OrbitControls.js"></script>
 		<script src="javascript/WebGL.js"></script>
+		<script type="text/javascript">
+				"use strict";
+				var controls;
+				var scene = new THREE.Scene(); //setur upp scene
+				scene.background = new THREE.Color( 0x000000 );
+				var camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 1, 10000 ); //setur upp camera
+				//THREE.PerspectiveCamera( fov, aspect, near, far );
+				var renderer = new THREE.WebGLRenderer(); //
+				renderer.setSize(window.innerWidth, window.innerHeight);
+				document.body.appendChild(renderer.domElement);
+				var geometry = new THREE.CylinderGeometry( 0, 250, 700, 25, 5, false );
+				var material = new THREE.MeshBasicMaterial({color: 0x00ffff, wireframe: true});
+				var pyralinder = new THREE.Mesh(geometry, material);
+				var controls = new THREE.OrbitControls( camera );
+				controls.update(); //must be called after any manual changes to the camera's transform
+				camera.position.set( 0, 0, 100 );
+				controls.update();
+				scene.add(pyralinder);
+				camera.position.z = 1000;
+				function render() {
+					requestAnimationFrame(render);
+					/*pyralinder.rotation.x += 0.01;
+					pyralinder.rotation.y += 0.02;
+					pyralinder.rotation.z += 0.05;*/
+					renderer.render(scene, camera);
+				}
+				render();
+		</script>
 	</body>
 </html>

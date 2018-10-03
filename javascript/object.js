@@ -1,5 +1,7 @@
 "use strict";
 
+var controls;
+
 var scene = new THREE.Scene(); //setur upp scene
 
 scene.background = new THREE.Color( 0x000000 );
@@ -19,6 +21,8 @@ var pyralinder = new THREE.Mesh(geometry, material);
 scene.add(pyralinder);
 
 camera.position.z = 1000;
+
+
 
 function render() {
    	requestAnimationFrame(render);

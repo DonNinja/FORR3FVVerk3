@@ -1,4 +1,8 @@
 body {
 	margin: 0 auto;
 	overflow-y: hidden;
+	cursor: grab;
+}
+body:active {
+	cursor: grabbing;
 }
